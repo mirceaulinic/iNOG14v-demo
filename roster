@@ -1,0 +1,24 @@
+router1:
+  driver: junos
+  host: juniper.iNOG14v.digitalocean.cloud.tesuto.com
+  grains:
+    role: router
+router2:
+  driver: junos
+  host: junos0.iNOG14v.digitalocean.cloud.tesuto.com
+  grains:
+    role: router
+
+{%- for i in range(1, 11) %}
+leaf{{ i }}:
+  driver: eos
+  host: eos{{ i }}.iNOG14v.digitalocean.cloud.tesuto.com
+  grains:
+    role: leaf
+
+spine{{ i }}:
+  driver: junos
+  host: junos{{ i }}.iNOG14v.digitalocean.cloud.tesuto.com
+  grains:
+    role: spine
+{%- endfor %}

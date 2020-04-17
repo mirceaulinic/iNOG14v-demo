@@ -1,0 +1,40 @@
+roster: file
+
+proxy:
+  proxytype: napalm
+  username: tesutonet
+  password: <change me>
+
+# ---------------------------------------------------------------------
+# runner_dirs required only when using the Salt REST API, or
+# when leveraging the event-driven capabilities.
+#
+# This section can be added by running:
+# salt-sproxy --save-file-roots
+
+file_roots:
+  base:
+    - /usr/local/lib/python3.5/dist-packages/salt_sproxy
+
+# Salt API configuration:
+# (for simplicity, using the "auto" authenticator, not
+#  recommended in prouction environments)
+
+external_auth:
+  auto:
+    test-usr:
+    - '@jobs'
+    - '@runner'
+    - .*
+
+rest_cherrypy:
+  disable_ssl: true
+  port: 8080
+
+
+
+# ---------------------------------------------------------------------
+# Non-mandatory configuration bits, used for runtime optimisation only.
+
+sync_roster: false
+sync_grains: false
