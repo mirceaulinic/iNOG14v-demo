@@ -14,6 +14,8 @@ proxy:
 
 file_roots:
   base:
+    - /srv/salt
+    - /srv/salt/states
     - /usr/local/lib/python3.5/dist-packages/salt_sproxy
 
 # Salt API configuration:
